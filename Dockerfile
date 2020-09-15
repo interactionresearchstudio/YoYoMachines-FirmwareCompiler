@@ -52,4 +52,6 @@ COPY . .
 
 RUN chmod +x entrypoint.sh
 
+WORKDIR /
+
 ENTRYPOINT ["/entrypoint.sh"]

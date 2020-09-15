@@ -45,7 +45,7 @@ arduino-cli compile -v -b esp32:esp32:esp32 --output-dir build $1
 echo "Building spiffs from data folder"
 git clone https://github.com/igrr/mkspiffs
 cd mkspiffs && git submodule update --init && make dist
-cd / && mkspiffs/./mkspiffs --version
+cd .. && mkspiffs/./mkspiffs --version
 mkspiffs/./mkspiffs -c $1/data -b 4096 -p 256 -s 0x100000 build/spiffs.bin
 
 # Merge bin files

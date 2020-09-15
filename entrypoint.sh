@@ -1,45 +1,16 @@
 #!/bin/sh -l
-
-# Install esp32
-echo "Installing esp32"
-arduino-cli core update-index --additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-arduino-cli core search esp32 --additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-arduino-cli core install esp32:esp32 --additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-
-# Install libraries from manager
-echo "Installing libraries"
-arduino-cli lib install FastLED
-arduino-cli lib install WebSockets
-arduino-cli lib install ArduinoJson
-arduino-cli lib install AceButton
-
-# Install GitHub libraries
-curl -L -O https://github.com/me-no-dev/ESPAsyncWebServer/archive/master.zip
-unzip master.zip
-mv ESPAsyncWebServer-master /root/Arduino/libraries/ESPAsyncWebServer
-rm master.zip
-
-curl -L -O https://github.com/me-no-dev/AsyncTCP/archive/master.zip
-unzip master.zip
-mv AsyncTCP-master /root/Arduino/libraries/AsyncTCP
-rm master.zip
-
-curl -L -O https://github.com/timum-viw/socket.io-client/archive/master.zip
-unzip master.zip
-mv socket.io-client-master /root/Arduino/libraries/SocketIoClient
-rm master.zip
-
-# List libraries
-arduino-cli lib list
-
 # Checkout repo
 echo "Checking out repository"
 git clone https://github.com/interactionresearchstudio/$1
+
+echo "*******LS"
+ls
 
 # Compile
 echo "Compiling"
 mkdir build
 arduino-cli compile -v -b esp32:esp32:esp32 --output-dir build $1
+
 
 # Build spiffs file
 echo "Building spiffs from data folder"

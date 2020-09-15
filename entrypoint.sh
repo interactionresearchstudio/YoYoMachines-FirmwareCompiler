@@ -48,8 +48,12 @@ cd mkspiffs && git submodule update --init && make dist
 cd .. && mkspiffs/./mkspiffs --version
 mkspiffs/./mkspiffs -c $1/data -b 4096 -p 256 -s 0x100000 build/spiffs.bin
 
+echo "Listing directory"
+ls
+
 # Merge bin files
 echo "Merging bin files"
+git clone https://github.com/vtunr/esp32_binary_merger
 python esp32_binary_merger/merge_bin_esp.py \
   --output_name app-combined.bin \
   --bin_path bootloader_qio_80m.bin build/$1.ino.partitions.bin build/$1.ino.bin build/spiffs.bin \

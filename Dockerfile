@@ -12,8 +12,6 @@ RUN git clone https://github.com/igrr/mkspiffs
 RUN cd mkspiffs && git submodule update --init && make dist
 RUN cd / && mkspiffs/./mkspiffs --version
 
-# Install binary merger
-RUN git clone https://github.com/vtunr/esp32_binary_merger
 
 RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 

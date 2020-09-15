@@ -5,6 +5,11 @@ git clone https://github.com/interactionresearchstudio/$1
 
 echo "*******LS"
 ls
+echo "*******PWD"
+pwd
+
+echo "INSTALLED LIBRARIES:"
+arduino-cli lib list
 
 # Compile
 echo "Compiling"

@@ -1,0 +1,12 @@
+name: 'Yo-Yo Machines Firmware Compiler'
+description: 'Compile firmware for Yo-Yo Machines'
+inputs:
+  repo-name:  # id of input
+    description: 'Repository name'
+    required: true
+    default: 'ESP32-SOCKETIO'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repo-name }}
